@@ -9,5 +9,5 @@ export function handleInitialData () {
                 dispatch(receiveUsers(users))
                 dispatch(receiveQuestions(questions))
             })
-    }
+    };
 }
