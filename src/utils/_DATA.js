@@ -200,3 +200,24 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
     }, 500)
   })
 }
+
+// FUNCTION TO SIGNUP A NEW USER (NOT USED YET):
+/* 
+export function _signUpUser ({ id, name, avatarURL }) {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      users = {
+        ...users,
+        [id]: {
+          ...users[id],
+          id: id,
+          name: name,
+          avatarURL: avatarURL,
+          questions: [],
+        },
+      };
+      res();
+    }, 500);
+  });
+} 
+*/

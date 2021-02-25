@@ -10,6 +10,10 @@ export function receiveQuestions (questions) {
     };
 }
 
+/* 
+I created the addQuestion function based on the following knowledge:
+https://knowledge.udacity.com/questions/128681
+*/
 export function addQuestion (question) {
     return {
         type: ADD_QUESTION,
