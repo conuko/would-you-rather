@@ -1,6 +1,6 @@
 import { getInitialData } from '../utils/API';
-import { receiveUsers } from '../actions/users';
-import { receiveQuestions } from '../actions/questions';
+import { receiveUsers } from './users';
+import { receiveQuestions } from './questions';
 
 export function handleInitialData () {
     return (dispatch) => {
