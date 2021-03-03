@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
+import Login from './Login';
+import Home from './Home';
 
 
 class App extends Component {
@@ -10,10 +12,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        Would You Rather
+        {this.props.noLogIn === true 
+          ? <Login />
+          : <Home />
+          }
       </div>
     );
   };
 }
 
-export default connect()(App);
+function mapStateToProps ({ authedUser }) {
+  return {
+    noLogIn: authedUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App);
