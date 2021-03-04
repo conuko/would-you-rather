@@ -26,12 +26,8 @@ class Login extends Component {
     };
 
     handleClick = (event) => {
-        this.setState(() => {
-            return {
-                anchorEl: event.currentTarget
-            };
-        });
-    };
+        this.setState({ anchorEl: event.currentTarget });
+      };
 
     handleClose = () => {
         this.setState(() => ({
@@ -68,8 +64,6 @@ class Login extends Component {
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}
-                    onSubmit={this.handleOnSubmit}
-                    onChange={this.handleChange}
                     onClose={this.handleClose}
                 >
                 {selectUsers.map((user) => (
@@ -78,6 +72,8 @@ class Login extends Component {
                     key={user.id}
                     label={user.name}
                     onClick={this.handleClose}
+                    onSubmit={this.handleOnSubmit}
+                    onChange={this.handleChange}
                     >{user.name}</MenuItem>
                 ))}
                 </Menu>
