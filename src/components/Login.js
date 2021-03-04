@@ -26,9 +26,11 @@ class Login extends Component {
     };
 
     handleClick = (event) => {
-        this.setState(() => ({
-            anchorEl: event.currentTarget
-        }));
+        this.setState(() => {
+            return {
+                anchorEl: event.currentTarget
+            };
+        });
     };
 
     handleClose = () => {
@@ -57,16 +59,9 @@ class Login extends Component {
         console.log(this.props);
         return (
             <div>
-                <h3 className='center'>Please choose a User to Login</h3>
-                {/* <ul className='home-list'>
-                    {this.props.usersToSelect.map((id) => (
-                        <li key={id}>
-                            <div>USER ID: {id}</div>
-                        </li>
-                    ))}
-                </ul> */}
+                <h3 className='center'>Welcome to "Would you Rather"</h3>
                 <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
-                    Choose User
+                    Please choose a user
                 </Button>
                 <Menu
                     id="simple-menu"
