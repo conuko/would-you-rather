@@ -5,7 +5,7 @@ import Login from './Login';
 import Home from './Home';
 
 /* 
-I created the App component and the way to choose how to show the Login Page or the Home Page withe help of the following knowledge:
+I created the App component and the way to choose how to show the Login Page or the Home Page with help of the following knowledge:
 https://knowledge.udacity.com/questions/234946
 */
 

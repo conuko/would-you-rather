@@ -1,38 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
-/* 
-========================================
-Import styles from @material-ui:
-========================================
-*/
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
+
+import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-/* 
-===========================================
-*/
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
 
 /* 
 I created the Login Component with the help from the following knowledge posts:
 https://knowledge.udacity.com/questions/234946
 https://knowledge.udacity.com/questions/508001
-
+https://knowledge.udacity.com/questions/510658
 */
 
 class Login extends Component {
     state = {
         loggedInUser: '',
-        anchorEl: null
+        open: false,
     };
-
-    handleClick = (event) => {
-        this.setState({ anchorEl: event.currentTarget });
-      };
 
     handleClose = () => {
         this.setState(() => ({
-            anchorEl: null
+            open: false
+        }));
+    };
+
+    handleOpen = () => {
+        this.setState(() => ({
+            open: true
         }));
     };
 
@@ -51,33 +48,43 @@ class Login extends Component {
       };
 
     render () {
-        const { anchorEl } = this.state;
+        const { open } = this.state;
+        const { loggedInUser } = this.state;
         const { selectUsers } = this.props;
         console.log(this.props);
         return (
             <div>
-                <h3 className='center'>"Would you Rather?"</h3>
-                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
-                    Please choose a user
-                </Button>
-                <Menu
-                    id="simple-menu"
-                    anchorEl={anchorEl}
-                    keepMounted
-                    open={Boolean(anchorEl)}
-                    onClose={this.handleClose}
-                    onChange={this.handleChange}
-                    onSubmit={this.handleOnSubmit}
-                >
-                {selectUsers.map((user) => (
-                    <MenuItem
-                    value={user.id}
-                    key={user.id}
-                    label={user.name}
-                    onClick={this.handleClose}
-                    >{user.name}</MenuItem>
-                ))}
-                </Menu>
+                <h3 className='center'>WELCOME TO 🔥WOULD YOU RATHER?!🔥 </h3>
+                <FormControl onSubmit={this.handleOnSubmit} className="form-control">
+                    <InputLabel id="demo-controlled-open-select-label">Select User</InputLabel>
+                    <Select
+                        labelId="demo-controlled-open-select-label"
+                        id="demo-controlled-open-select"
+                        open={open}
+                        onClose={this.handleClose}
+                        onOpen={this.handleOpen}
+                        value={loggedInUser}
+                        onChange={this.handleChange}
+                    >
+                    <MenuItem value="">
+                        <em>None</em>
+                    </MenuItem>
+                        {selectUsers.map((user) => (
+                            <MenuItem
+                            value={user.id}
+                            key={user.id}
+                            label={user.name}
+                            onClick={(event) => this.handleChange(event)}
+                            >{user.name}</MenuItem>
+                        ))}
+                    </Select>
+                    <Button
+                        type="submit"
+                        onClick={(event) => this.handleOnSubmit(event)}
+                        >
+                        Login
+                    </Button>
+                </FormControl>
             </div>
         );
     };
@@ -92,9 +99,8 @@ function mapStateToProps ({ users }) {
                 return {
                     id: users[user].id,
                     name: users[user].name,
-                    picture: users[user].avatarURL
-                }
-            })
+                };
+            });
             return {
                 selectUsers: usersToSelect,
             };
