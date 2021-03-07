@@ -14,15 +14,16 @@ import MenuItem from '@material-ui/core/MenuItem';
 */
 
 /* 
-I created the Login Component with the help from the knowledge:
+I created the Login Component with the help from the following knowledge posts:
 https://knowledge.udacity.com/questions/234946
+https://knowledge.udacity.com/questions/508001
+
 */
 
 class Login extends Component {
     state = {
         loggedInUser: '',
         anchorEl: null
-
     };
 
     handleClick = (event) => {
@@ -55,7 +56,7 @@ class Login extends Component {
         console.log(this.props);
         return (
             <div>
-                <h3 className='center'>Welcome to "Would you Rather"</h3>
+                <h3 className='center'>"Would you Rather?"</h3>
                 <Button aria-controls="simple-menu" aria-haspopup="true" onClick={this.handleClick}>
                     Please choose a user
                 </Button>
@@ -65,6 +66,8 @@ class Login extends Component {
                     keepMounted
                     open={Boolean(anchorEl)}
                     onClose={this.handleClose}
+                    onChange={this.handleChange}
+                    onSubmit={this.handleOnSubmit}
                 >
                 {selectUsers.map((user) => (
                     <MenuItem
@@ -72,8 +75,6 @@ class Login extends Component {
                     key={user.id}
                     label={user.name}
                     onClick={this.handleClose}
-                    onSubmit={this.handleOnSubmit}
-                    onChange={this.handleChange}
                     >{user.name}</MenuItem>
                 ))}
                 </Menu>
