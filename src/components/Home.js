@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import HomeCard from './HomeCard';
 
 class Home extends Component {
     render () {
@@ -9,21 +10,15 @@ class Home extends Component {
                 <h3 className='center'>Questions</h3>
                 <ul className='home-list'>
                     <div className='unanswered-questions'>
+                        Unanswered Questions:
                         {this.props.unansweredQuestions.map((id) => (
-                            //{/* <HomeCard key={id} id={id} />*/}
-                            <li key={id}>
-                                <div>UNANSWERED-QUESTION ID: {id}</div> 
-                                {/* anstatt des li Elements und des div, kommt hier der HOMECARDS-Component rein */}
-                            </li>
+                            <HomeCard key={id} id={id} /> 
                         ))}
                     </div>
                     <div className='answered-questions'>
+                        Answered Questions:
                         {this.props.answeredQuestions.map((id) => (
-                            //{/* <HomeCard key={id} id={id} />*/}
-                            <li key={id}>
-                                <div>ANSWERED-QUESTION ID: {id}</div> 
-                                {/* anstatt des li Elements und des div, kommt hier der HOMECARDS-Component rein */}
-                            </li>
+                            <HomeCard key={id} id={id} />
                         ))}
                     </div>
                 </ul>
@@ -63,7 +58,7 @@ function mapStateToProps({ users, authedUser, questions}) {
         authedUser,
         answeredQuestions,
         unansweredQuestions,
-    }
+    };
 }
 
 export default connect(mapStateToProps)(Home);
