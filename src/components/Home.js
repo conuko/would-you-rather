@@ -2,27 +2,85 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import HomeCard from './HomeCard';
 
+import styled from 'styled-components';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Button from '@material-ui/core/Button';
+
+const HomePage = styled.div`
+    margin: auto;
+    padding-top: 150px;
+    position: relative;
+`;
+
+const ButtonContainer = styled.div`
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+`;
+
 class Home extends Component {
+    /*
+    To switch between Unanswered and Answered Questions I created a initialise state with a boolean set to false like it is done in the following knowledge from stackoverflow:
+    https://stackoverflow.com/questions/47406895/display-a-component-on-clicking-a-button-in-react
+    */
+    state = {
+        showAnsweredQuestions: false
+    }
+    /*
+    To switch between Unanswered and Answered Questions I created the following two event handlers like it is done in the following knowledge from stackoverflow:
+    https://stackoverflow.com/questions/47406895/display-a-component-on-clicking-a-button-in-react
+    */
+    handleUnansweredQuestions = () => {
+        this.setState({
+            showAnsweredQuestions: false
+        });
+    };
+
+    handleAnsweredQuestions = () => {
+        this.setState({
+            showAnsweredQuestions: true
+        });
+    };
+
     render () {
+        const { showAnsweredQuestions } = this.state;
+        const { unansweredQuestions, answeredQuestions } = this.props
         console.log(this.props);
         return (
-            <div>
-                <h3 className='center'>Questions</h3>
+            <HomePage>
+                <ButtonContainer>
+                    <Button
+                        color="primary"
+                        variant={showAnsweredQuestions === false ? "contained" : "outlined"}
+                        onClick={this.handleUnansweredQuestions}
+                        >
+                        Unanswered Questions
+                    </Button>
+                    <Button
+                        color="primary"
+                        variant={showAnsweredQuestions === true ? "contained" : "outlined"}
+                        onClick={this.handleAnsweredQuestions}
+                        >
+                        Answered Questions
+                    </Button>
+                </ButtonContainer>
                 <ul className='home-list'>
+                {showAnsweredQuestions === false && (
                     <div className='unanswered-questions'>
-                        Unanswered Questions:
-                        {this.props.unansweredQuestions.map((id) => (
+                        {unansweredQuestions.map((id) => (
                             <HomeCard key={id} id={id} /> 
                         ))}
                     </div>
+                )}
+                {showAnsweredQuestions === true && (
                     <div className='answered-questions'>
-                        Answered Questions:
-                        {this.props.answeredQuestions.map((id) => (
+                        {answeredQuestions.map((id) => (
                             <HomeCard key={id} id={id} />
                         ))}
                     </div>
+                )}
                 </ul>
-            </div>
+            </HomePage>
         );
     };
 }

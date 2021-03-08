@@ -10,8 +10,16 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+const HomeCardContainer = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+`;
+
 const StyledCard = styled(Card)`
-    minWidth: 275;
+    width: 300px;
+    margin: 10px auto;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 `;
 
 const Title = styled(Typography)`
@@ -26,37 +34,35 @@ const StyledAvatar = styled(Avatar)`
     
 `;
 
-
-
-
-
 class HomeCard extends Component {
     render() {
         const { id, avatarURL, name, question } = this.props;
         return (
             <StylesProvider injectFirst>
-                <StyledCard>
-                    <CardContent>
-                        <StyledAvatar src={avatarURL} alt={name} />
-                        <Title color="textSecondary" gutterBottom>
-                            {name}
-                        </Title>
-                        <Typography variant="h5" component="h2">
-                            Would you rather...
-                        </Typography>
-                        <Pos color="textSecondary">
-                            {question.optionOne.text}
-                        </Pos>
-                        <Typography variant="body2" component="p">
-                            OR
-                            <br />
-                            ...
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                        <Button size="small">Show More</Button>
-                    </CardActions>
-                </StyledCard>
+                <HomeCardContainer>
+                    <StyledCard>
+                        <CardContent>
+                            <StyledAvatar src={avatarURL} alt={name} />
+                            <Title color="textSecondary" gutterBottom>
+                                {name}
+                            </Title>
+                            <Typography variant="h5" component="h2">
+                                Would you rather...
+                            </Typography>
+                            <Pos color="textSecondary">
+                                {question.optionOne.text}
+                            </Pos>
+                            <Typography variant="body2" component="p">
+                                OR
+                                <br />
+                                ...
+                            </Typography>
+                        </CardContent>
+                        <CardActions>
+                            <Button size="small">Show More</Button>
+                        </CardActions>
+                    </StyledCard>
+                </HomeCardContainer>
             </StylesProvider>
         )
     }
