@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
 import Login from './Login';
 import Home from './Home';
+import LoadingBar from 'react-redux-loading';
 
 /* 
 I created the App component and the way to choose how to show the Login Page or the Home Page with help of the following knowledge:
@@ -16,6 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <LoadingBar />
         {this.props.noLogIn === true 
           ? <Login />
           : <Home />

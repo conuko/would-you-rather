@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import HomeCard from './HomeCard';
-
 import styled from 'styled-components';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 
 const HomePage = styled.div`
@@ -68,14 +66,14 @@ class Home extends Component {
                 {showAnsweredQuestions === false && (
                     <div className='unanswered-questions'>
                         {unansweredQuestions.map((id) => (
-                            <HomeCard key={id} id={id} /> 
+                            <HomeCard key={id} id={id} showAnsweredQuestions={showAnsweredQuestions}/> 
                         ))}
                     </div>
                 )}
                 {showAnsweredQuestions === true && (
                     <div className='answered-questions'>
                         {answeredQuestions.map((id) => (
-                            <HomeCard key={id} id={id} />
+                            <HomeCard key={id} id={id} showAnsweredQuestions={showAnsweredQuestions}/>
                         ))}
                     </div>
                 )}

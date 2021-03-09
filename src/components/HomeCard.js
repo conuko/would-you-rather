@@ -34,9 +34,13 @@ const StyledAvatar = styled(Avatar)`
     
 `;
 
+// TODO: add React Router and if link the button "Show More" to the /id:question URL. 
+//          if the "showAnsweredQuestions" props is false, the Question component should be rendered.
+//          if the "showAnsweredQuestions" props is true, the Result component should be rendered. 
+
 class HomeCard extends Component {
     render() {
-        const { id, avatarURL, name, question } = this.props;
+        const { id, avatarURL, name, question, showAnsweredQuestions } = this.props;
         return (
             <StylesProvider injectFirst>
                 <HomeCardContainer>

@@ -1,4 +1,4 @@
-//import { saveQuestion, saveQuestionAnswer } from '../utils/API';
+import { saveQuestion, saveQuestionAnswer } from '../utils/API';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTIONS';
@@ -20,3 +20,4 @@ export function addQuestion (question) {
         question,
     };
 }
+

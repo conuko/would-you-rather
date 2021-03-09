@@ -20,7 +20,7 @@ export default function questions (state = {}, action) {
                 }
             };
         /* 
-        I created the ADD_ANSWER case with the help from the following resource:
+        I created the ADD_ANSWER case to add an answer to a question with the help from the following resource:
         https://knowledge.udacity.com/questions/150877
         */
         case ADD_ANSWER :
