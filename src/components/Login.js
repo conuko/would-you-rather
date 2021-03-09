@@ -74,6 +74,11 @@ class Login extends Component {
         }));
     };
 
+    /*     
+    created the handleOnSubmit method with the help of the following knowledge:
+    https://knowledge.udacity.com/questions/508001
+    https://knowledge.udacity.com/questions/510658
+    */
     handleOnSubmit = (event) => {
         event.preventDefault();
         const { dispatch } = this.props;

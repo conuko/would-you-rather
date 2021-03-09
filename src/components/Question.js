@@ -1,8 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Result from './Result';
+import { handleAddAnswer } from '../actions/answers';
+
+//TO DO: import a format-question function from helpers (have to create it)!!
 
 class Question extends Component {
+    state={
+
+    }
+
+    handleChange = (event) => {
+
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+
+        const { dispatch, authedUser, id } = this.props
+
+        dispatch(handleAddAnswer({
+            authedUser: authedUser,
+            qid: id,
+            answer:
+        }))
+    }
     render() {
         return(
             <div>

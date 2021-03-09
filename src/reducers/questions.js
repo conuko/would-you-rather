@@ -11,6 +11,8 @@ export default function questions (state = {}, action) {
         /* 
         I created the reducer function and the case ADD_QUESTION with the help from the following resource:
         https://knowledge.udacity.com/questions/128681
+        AND
+        based on the TOGGLE_TWEET case in the tweets.js reducer from Lesson 7: Real World Redux:
         */
         case ADD_QUESTION :
             return {
@@ -22,6 +24,8 @@ export default function questions (state = {}, action) {
         /* 
         I created the ADD_ANSWER case to add an answer to a question with the help from the following resource:
         https://knowledge.udacity.com/questions/150877
+        AND
+        based on the TOGGLE_TWEET case in the tweets.js reducer from Lesson 7: Real World Redux:
         */
         case ADD_ANSWER :
             return {
